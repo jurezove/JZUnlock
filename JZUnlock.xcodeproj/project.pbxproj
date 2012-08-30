@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		250D3B9F15EF487E001EA95D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250D3B9E15EF487E001EA95D /* UIKit.framework */; };
+		250D3BA115EF487E001EA95D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250D3BA015EF487E001EA95D /* Foundation.framework */; };
+		250D3BA315EF487E001EA95D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250D3BA215EF487E001EA95D /* CoreGraphics.framework */; };
+		250D3BA915EF487E001EA95D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BA715EF487E001EA95D /* InfoPlist.strings */; };
+		250D3BAB15EF487E001EA95D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BAA15EF487E001EA95D /* main.m */; };
+		250D3BAF15EF487E001EA95D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BAE15EF487E001EA95D /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		250D3B9A15EF487E001EA95D /* JZUnlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZUnlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		250D3B9E15EF487E001EA95D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		250D3BA015EF487E001EA95D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		250D3BA215EF487E001EA95D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		250D3BA615EF487E001EA95D /* JZUnlock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JZUnlock-Info.plist"; sourceTree = "<group>"; };
+		250D3BA815EF487E001EA95D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		250D3BAA15EF487E001EA95D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		250D3BAC15EF487E001EA95D /* JZUnlock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JZUnlock-Prefix.pch"; sourceTree = "<group>"; };
+		250D3BAD15EF487E001EA95D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		250D3BAE15EF487E001EA95D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		250D3B9715EF487E001EA95D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250D3B9F15EF487E001EA95D /* UIKit.framework in Frameworks */,
+				250D3BA115EF487E001EA95D /* Foundation.framework in Frameworks */,
+				250D3BA315EF487E001EA95D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		250D3B8F15EF487E001EA95D = {
+			isa = PBXGroup;
+			children = (
+				250D3BA415EF487E001EA95D /* JZUnlock */,
+				250D3B9D15EF487E001EA95D /* Frameworks */,
+				250D3B9B15EF487E001EA95D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		250D3B9B15EF487E001EA95D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				250D3B9A15EF487E001EA95D /* JZUnlock.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		250D3B9D15EF487E001EA95D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				250D3B9E15EF487E001EA95D /* UIKit.framework */,
+				250D3BA015EF487E001EA95D /* Foundation.framework */,
+				250D3BA215EF487E001EA95D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		250D3BA415EF487E001EA95D /* JZUnlock */ = {
+			isa = PBXGroup;
+			children = (
+				250D3BAD15EF487E001EA95D /* AppDelegate.h */,
+				250D3BAE15EF487E001EA95D /* AppDelegate.m */,
+				250D3BA515EF487E001EA95D /* Supporting Files */,
+			);
+			path = JZUnlock;
+			sourceTree = "<group>";
+		};
+		250D3BA515EF487E001EA95D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				250D3BA615EF487E001EA95D /* JZUnlock-Info.plist */,
+				250D3BA715EF487E001EA95D /* InfoPlist.strings */,
+				250D3BAA15EF487E001EA95D /* main.m */,
+				250D3BAC15EF487E001EA95D /* JZUnlock-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		250D3B9915EF487E001EA95D /* JZUnlock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 250D3BB215EF487E001EA95D /* Build configuration list for PBXNativeTarget "JZUnlock" */;
+			buildPhases = (
+				250D3B9615EF487E001EA95D /* Sources */,
+				250D3B9715EF487E001EA95D /* Frameworks */,
+				250D3B9815EF487E001EA95D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JZUnlock;
+			productName = JZUnlock;
+			productReference = 250D3B9A15EF487E001EA95D /* JZUnlock.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		250D3B9115EF487E001EA95D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Jure Žove";
+			};
+			buildConfigurationList = 250D3B9415EF487E001EA95D /* Build configuration list for PBXProject "JZUnlock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 250D3B8F15EF487E001EA95D;
+			productRefGroup = 250D3B9B15EF487E001EA95D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				250D3B9915EF487E001EA95D /* JZUnlock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		250D3B9815EF487E001EA95D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250D3BA915EF487E001EA95D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		250D3B9615EF487E001EA95D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250D3BAB15EF487E001EA95D /* main.m in Sources */,
+				250D3BAF15EF487E001EA95D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		250D3BA715EF487E001EA95D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				250D3BA815EF487E001EA95D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		250D3BB015EF487E001EA95D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		250D3BB115EF487E001EA95D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		250D3BB315EF487E001EA95D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZUnlock/JZUnlock-Prefix.pch";
+				INFOPLIST_FILE = "JZUnlock/JZUnlock-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		250D3BB415EF487E001EA95D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JZUnlock/JZUnlock-Prefix.pch";
+				INFOPLIST_FILE = "JZUnlock/JZUnlock-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		250D3B9415EF487E001EA95D /* Build configuration list for PBXProject "JZUnlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250D3BB015EF487E001EA95D /* Debug */,
+				250D3BB115EF487E001EA95D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		250D3BB215EF487E001EA95D /* Build configuration list for PBXNativeTarget "JZUnlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250D3BB315EF487E001EA95D /* Debug */,
+				250D3BB415EF487E001EA95D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 250D3B9115EF487E001EA95D /* Project object */;
+}
