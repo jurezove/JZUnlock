@@ -13,6 +13,16 @@
 		250D3BA915EF487E001EA95D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BA715EF487E001EA95D /* InfoPlist.strings */; };
 		250D3BAB15EF487E001EA95D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BAA15EF487E001EA95D /* main.m */; };
 		250D3BAF15EF487E001EA95D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BAE15EF487E001EA95D /* AppDelegate.m */; };
+		250D3BB715EF48E9001EA95D /* JZUnlockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BB615EF48E9001EA95D /* JZUnlockController.m */; };
+		250D3BBA15EF66C4001EA95D /* JZUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BB915EF66C4001EA95D /* JZUnlockView.m */; };
+		250D3BBC15EF6CD4001EA95D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250D3BBB15EF6CD4001EA95D /* QuartzCore.framework */; };
+		250D3BBF15EFD578001EA95D /* JZLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D3BBE15EFD578001EA95D /* JZLock.m */; };
+		250D3BD215EFF2A3001EA95D /* lock_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BCC15EFF2A2001EA95D /* lock_normal.png */; };
+		250D3BD315EFF2A3001EA95D /* lock_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BCD15EFF2A2001EA95D /* lock_normal@2x.png */; };
+		250D3BD415EFF2A3001EA95D /* lock_invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BCE15EFF2A2001EA95D /* lock_invalid.png */; };
+		250D3BD515EFF2A3001EA95D /* lock_invalid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BCF15EFF2A2001EA95D /* lock_invalid@2x.png */; };
+		250D3BD615EFF2A3001EA95D /* lock_valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BD015EFF2A2001EA95D /* lock_valid.png */; };
+		250D3BD715EFF2A3001EA95D /* lock_valid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D3BD115EFF2A3001EA95D /* lock_valid@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +36,19 @@
 		250D3BAC15EF487E001EA95D /* JZUnlock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JZUnlock-Prefix.pch"; sourceTree = "<group>"; };
 		250D3BAD15EF487E001EA95D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		250D3BAE15EF487E001EA95D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		250D3BB515EF48E9001EA95D /* JZUnlockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZUnlockController.h; sourceTree = "<group>"; };
+		250D3BB615EF48E9001EA95D /* JZUnlockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZUnlockController.m; sourceTree = "<group>"; };
+		250D3BB815EF66C4001EA95D /* JZUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZUnlockView.h; sourceTree = "<group>"; };
+		250D3BB915EF66C4001EA95D /* JZUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZUnlockView.m; sourceTree = "<group>"; };
+		250D3BBB15EF6CD4001EA95D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		250D3BBD15EFD578001EA95D /* JZLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZLock.h; sourceTree = "<group>"; };
+		250D3BBE15EFD578001EA95D /* JZLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZLock.m; sourceTree = "<group>"; };
+		250D3BCC15EFF2A2001EA95D /* lock_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_normal.png; sourceTree = "<group>"; };
+		250D3BCD15EFF2A2001EA95D /* lock_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_normal@2x.png"; sourceTree = "<group>"; };
+		250D3BCE15EFF2A2001EA95D /* lock_invalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_invalid.png; sourceTree = "<group>"; };
+		250D3BCF15EFF2A2001EA95D /* lock_invalid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_invalid@2x.png"; sourceTree = "<group>"; };
+		250D3BD015EFF2A2001EA95D /* lock_valid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_valid.png; sourceTree = "<group>"; };
+		250D3BD115EFF2A3001EA95D /* lock_valid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_valid@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				250D3BBC15EF6CD4001EA95D /* QuartzCore.framework in Frameworks */,
 				250D3B9F15EF487E001EA95D /* UIKit.framework in Frameworks */,
 				250D3BA115EF487E001EA95D /* Foundation.framework in Frameworks */,
 				250D3BA315EF487E001EA95D /* CoreGraphics.framework in Frameworks */,
@@ -45,6 +69,7 @@
 		250D3B8F15EF487E001EA95D = {
 			isa = PBXGroup;
 			children = (
+				250D3BBB15EF6CD4001EA95D /* QuartzCore.framework */,
 				250D3BA415EF487E001EA95D /* JZUnlock */,
 				250D3B9D15EF487E001EA95D /* Frameworks */,
 				250D3B9B15EF487E001EA95D /* Products */,
@@ -75,6 +100,18 @@
 				250D3BAD15EF487E001EA95D /* AppDelegate.h */,
 				250D3BAE15EF487E001EA95D /* AppDelegate.m */,
 				250D3BA515EF487E001EA95D /* Supporting Files */,
+				250D3BB515EF48E9001EA95D /* JZUnlockController.h */,
+				250D3BB615EF48E9001EA95D /* JZUnlockController.m */,
+				250D3BB815EF66C4001EA95D /* JZUnlockView.h */,
+				250D3BB915EF66C4001EA95D /* JZUnlockView.m */,
+				250D3BBD15EFD578001EA95D /* JZLock.h */,
+				250D3BBE15EFD578001EA95D /* JZLock.m */,
+				250D3BCC15EFF2A2001EA95D /* lock_normal.png */,
+				250D3BCD15EFF2A2001EA95D /* lock_normal@2x.png */,
+				250D3BCE15EFF2A2001EA95D /* lock_invalid.png */,
+				250D3BCF15EFF2A2001EA95D /* lock_invalid@2x.png */,
+				250D3BD015EFF2A2001EA95D /* lock_valid.png */,
+				250D3BD115EFF2A3001EA95D /* lock_valid@2x.png */,
 			);
 			path = JZUnlock;
 			sourceTree = "<group>";
@@ -142,6 +179,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				250D3BA915EF487E001EA95D /* InfoPlist.strings in Resources */,
+				250D3BD215EFF2A3001EA95D /* lock_normal.png in Resources */,
+				250D3BD315EFF2A3001EA95D /* lock_normal@2x.png in Resources */,
+				250D3BD415EFF2A3001EA95D /* lock_invalid.png in Resources */,
+				250D3BD515EFF2A3001EA95D /* lock_invalid@2x.png in Resources */,
+				250D3BD615EFF2A3001EA95D /* lock_valid.png in Resources */,
+				250D3BD715EFF2A3001EA95D /* lock_valid@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +197,9 @@
 			files = (
 				250D3BAB15EF487E001EA95D /* main.m in Sources */,
 				250D3BAF15EF487E001EA95D /* AppDelegate.m in Sources */,
+				250D3BB715EF48E9001EA95D /* JZUnlockController.m in Sources */,
+				250D3BBA15EF66C4001EA95D /* JZUnlockView.m in Sources */,
+				250D3BBF15EFD578001EA95D /* JZLock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
