@@ -21,6 +21,10 @@
     JZUnlockView *unlockView = [[JZUnlockView alloc] initWithFrame:self.window.bounds
                                                         andPattern:JZUnlockPattern3x3
                                                 unlockViewDelegate:nil];
+    [unlockView setImage:[UIImage imageNamed:@"lock_normal"] forState:JZLockStateNormal];
+    [unlockView setImage:[UIImage imageNamed:@"lock_invalid"] forState:JZLockStateInvalid];
+    [unlockView setImage:[UIImage imageNamed:@"lock_valid"] forState:JZLockStateValid];
+
     [self.window.rootViewController.view addSubview:unlockView];
     [self.window makeKeyAndVisible];
     return YES;

@@ -25,12 +25,13 @@ typedef enum {
 
 @end
 
-@interface JZUnlockView : UIView <UIGestureRecognizerDelegate>
+@interface JZUnlockView : UIView <UIGestureRecognizerDelegate, JZLockDelegate>
 
 - (id)initWithFrame:(CGRect)frame
          andPattern:(JZUnlockPattern)pattern
     unlockViewDelegate:(id<JZUnlockViewDelegate>)unlockDelegate;
 
+- (void)setImage:(UIImage*)image forState:(JZLockState)state;
 - (void)lockActivated:(UIView*)lock;
 - (void)drawLine:(NSArray*)points;
 - (UIView*)lockWith:(CGPoint)point;

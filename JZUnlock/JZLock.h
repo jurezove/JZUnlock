@@ -14,11 +14,21 @@ typedef enum {
     JZLockStateInvalid
 } JZLockState;
 
+@protocol JZLockDelegate <NSObject>
+
+- (UIImage*)imageForState:(JZLockState)state;
+
+@end
+
 @interface JZLock : UIView
 
 //- (id)initWithFrame:(CGRect)frame
 //           andImage:(UIImage*)image;
-- (void)setImage:(UIImage*)image forState:(JZLockState)state;
+- (id)initWithFrame:(CGRect)frame
+       lockDelegate:(id<JZLockDelegate>)lockDelegate;
+
+@property (nonatomic, weak) id<JZLockDelegate>lockDelegate;
+
 - (void)changeState:(JZLockState)state animated:(BOOL)animated;
 
 @end

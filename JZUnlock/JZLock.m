@@ -11,7 +11,6 @@
 @interface JZLock()
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) NSMutableDictionary *images;
 @property (nonatomic) JZLockState currentState;
 
 @end
@@ -19,36 +18,27 @@
 @implementation JZLock
 
 @synthesize imageView = _imageView;
-@synthesize images = _images;
+@synthesize lockDelegate = _lockDelegate;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.imageView];
-        self.images = [NSMutableDictionary dictionaryWithCapacity:3];
         self.currentState = JZLockStateNormal;
     }
     return self;
 }
 
 - (id)initWithFrame:(CGRect)frame
-           andImage:(UIImage *)image {
-    if (self = [super initWithFrame:frame]) {
-        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        self.imageView.image = image;
-        [self addSubview:self.imageView];
+       lockDelegate:(id<JZLockDelegate>)lockDelegate {
+    if (self = [self initWithFrame:frame]) {
+        self.lockDelegate = lockDelegate;
     }
     return self;
 }
 
-- (void)setImage:(UIImage *)image forState:(JZLockState)state {
-    [self.images setObject:image forKey:[NSNumber numberWithInt:state]];
-    if (state == self.currentState)
-        [self changeState:self.currentState animated:NO];
-}
-
 - (void)changeState:(JZLockState)state animated:(BOOL)animated {
-    UIImage *image = [self.images objectForKey:[NSNumber numberWithInt:state]];
+    UIImage *image = [self.lockDelegate imageForState:state];
     if (state != self.currentState && animated) {
         // Animate
         [UIView animateWithDuration:0.1
@@ -65,7 +55,6 @@
                               }];
                          }];
     } else {
-        NSLog(@"Changing image without anim for state: %d", state);
         self.imageView.image = image;
     }
     self.currentState = state;

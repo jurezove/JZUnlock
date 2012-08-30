@@ -15,11 +15,11 @@
 }
 
 @property (nonatomic, strong) NSArray *locks;
-//@property (nonatomic, weak) id<UIGestureRecognizerDelegate>gestureDelegate;
 @property (nonatomic, weak) id<JZUnlockViewDelegate>unlockDelegate;
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
 @property (nonatomic, strong) NSMutableArray *activeLocks;
 @property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong) NSMutableDictionary *images;
 
 @end
 
@@ -29,6 +29,7 @@
 @synthesize unlockDelegate = _unlockDelegate;
 @synthesize pan = _pan;
 @synthesize activeLocks = _activeLocks;
+@synthesize images = _images;
 
 - (id)initWithFrame:(CGRect)frame
          andPattern:(JZUnlockPattern)pattern
@@ -43,7 +44,7 @@
         [self addGestureRecognizer:self.pan];
         
         self.activeLocks = [[NSMutableArray alloc] initWithCapacity:16];
-        
+        self.images = [NSMutableDictionary dictionaryWithCapacity:3];
         self.lineColor = [UIColor greenColor];
     }
     return self;
@@ -86,10 +87,12 @@
                                          y,
                                          widthOfLock,
                                          widthOfLock);
-            JZLock *lock = [[JZLock alloc] initWithFrame:lockRect];
-            [lock setImage:[UIImage imageNamed:@"lock_normal"] forState:JZLockStateNormal];
-            [lock setImage:[UIImage imageNamed:@"lock_invalid"] forState:JZLockStateInvalid];
-            [lock setImage:[UIImage imageNamed:@"lock_valid"] forState:JZLockStateValid];
+            JZLock *lock = [[JZLock alloc] initWithFrame:lockRect
+                            lockDelegate:self];
+//            [lock setImage:[UIImage imageNamed:@"lock_normal"] forState:JZLockStateNormal];
+//            [lock setImage:[UIImage imageNamed:@"lock_invalid"] forState:JZLockStateInvalid];
+//            [lock setImage:[UIImage imageNamed:@"lock_valid"] forState:JZLockStateValid];
+//            [lock changeState:JZLockStateNormal animated:NO];
             
             UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlePress:)];
             longPress.minimumPressDuration = 0;
@@ -127,7 +130,6 @@
 
     self.lineColor = [UIColor redColor];
     for (JZLock *lock in self.activeLocks) {
-        NSLog(@"Finishing lock: %@", lock);
         [lock changeState:JZLockStateInvalid animated:NO];
     }
 
@@ -136,13 +138,27 @@
 }
 
 - (UIView *)lockWith:(CGPoint)point {
-//    NSLog(@"Checking point: %@", NSStringFromCGPoint(point));
     for (UIView* lock in self.locks) {
         if (CGRectContainsPoint(lock.frame, point)) {
             return lock;
         }
     }
     return nil;
+}
+
+- (void)setImage:(UIImage *)image forState:(JZLockState)state {
+    [self.images setObject:image forKey:[NSNumber numberWithInt:state]];
+}
+
+- (void)layoutSubviews {
+    for (JZLock *lock in self.locks)
+        [lock changeState:JZLockStateNormal animated:NO];
+}
+
+#pragma mark - JZLockDelegate
+
+- (UIImage *)imageForState:(JZLockState)state {
+    return [self.images objectForKey:[NSNumber numberWithInt:state]];
 }
 
 #pragma mark - Drawing
