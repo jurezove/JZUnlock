@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "JZUnlockController.h"
+#import "JZUnlockView.h"
 
 @implementation AppDelegate
 
@@ -16,7 +16,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[JZUnlockController alloc] init];
+    self.window.rootViewController = [[UIViewController alloc] init];
+    
+    JZUnlockView *unlockView = [[JZUnlockView alloc] initWithFrame:self.window.bounds
+                                                        andPattern:JZUnlockPattern3x3
+                                                unlockViewDelegate:nil];
+    [self.window.rootViewController.view addSubview:unlockView];
     [self.window makeKeyAndVisible];
     return YES;
 }
