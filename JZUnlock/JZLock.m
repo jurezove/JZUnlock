@@ -18,21 +18,18 @@
 @implementation JZLock
 
 @synthesize imageView = _imageView;
+@synthesize lockData = _lockData;
 @synthesize lockDelegate = _lockDelegate;
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+       lockDelegate:(id<JZLockDelegate>)lockDelegate
+           lockData:(id)lockData {
     if (self = [super initWithFrame:frame]) {
         self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self addSubview:self.imageView];
         self.currentState = JZLockStateNormal;
-    }
-    return self;
-}
-
-- (id)initWithFrame:(CGRect)frame
-       lockDelegate:(id<JZLockDelegate>)lockDelegate {
-    if (self = [self initWithFrame:frame]) {
         self.lockDelegate = lockDelegate;
+        self.lockData = lockData;
     }
     return self;
 }
@@ -48,11 +45,10 @@
                              self.imageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
                              self.imageView.image = image;
                          } completion:^(BOOL finished) {
-                              
                              [UIView animateWithDuration:0.1
-                              animations:^{
-                                self.imageView.transform = CGAffineTransformIdentity;
-                              }];
+                                              animations:^{
+                                                  self.imageView.transform = CGAffineTransformIdentity;
+                                              }];
                          }];
     } else {
         self.imageView.image = image;

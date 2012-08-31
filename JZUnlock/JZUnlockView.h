@@ -19,9 +19,13 @@ typedef enum {
 
 @protocol JZUnlockViewDelegate <NSObject>
 
+@optional
+
 - (void)lockViewDidBeginUnlocking:(JZUnlockView*)unlockView andLock:(UIView*)lock;
 - (void)lockViewDidEndUnlocking:(JZUnlockView*)unlockView;
 - (BOOL)lockViewCanBeginUnlocking:(JZUnlockView*)unlockView andLock:(UIView*)lock;
+- (BOOL)lockView:(JZUnlockView*)lockView endedUnlocking:(NSArray*)sequence;
+- (id)lockView:(JZUnlockView*)lockView dataForRow:(NSInteger)row column:(NSInteger)column;
 
 @end
 
@@ -29,12 +33,8 @@ typedef enum {
 
 - (id)initWithFrame:(CGRect)frame
          andPattern:(JZUnlockPattern)pattern
-    unlockViewDelegate:(id<JZUnlockViewDelegate>)unlockDelegate;
+ unlockViewDelegate:(id<JZUnlockViewDelegate>)unlockDelegate;
 
 - (void)setImage:(UIImage*)image forState:(JZLockState)state;
-- (void)lockActivated:(UIView*)lock;
-- (void)drawLine:(NSArray*)points;
-- (UIView*)lockWith:(CGPoint)point;
-- (void)cleanup;
 
 @end

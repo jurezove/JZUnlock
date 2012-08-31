@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "JZUnlockView.h"
 
 @implementation AppDelegate
 
@@ -20,10 +19,11 @@
     
     JZUnlockView *unlockView = [[JZUnlockView alloc] initWithFrame:self.window.bounds
                                                         andPattern:JZUnlockPattern3x3
-                                                unlockViewDelegate:nil];
+                                                unlockViewDelegate:self];
     [unlockView setImage:[UIImage imageNamed:@"lock_normal"] forState:JZLockStateNormal];
     [unlockView setImage:[UIImage imageNamed:@"lock_invalid"] forState:JZLockStateInvalid];
     [unlockView setImage:[UIImage imageNamed:@"lock_valid"] forState:JZLockStateValid];
+    [unlockView setImage:[UIImage imageNamed:@"lock_selected"] forState:JZLockStateSelected];
 
     [self.window.rootViewController.view addSubview:unlockView];
     [self.window makeKeyAndVisible];
@@ -55,6 +55,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - JZUnlockViewDelegate
+
+- (id)lockView:(JZUnlockView *)lockView dataForRow:(NSInteger)row column:(NSInteger)column {
+    return [NSString stringWithFormat:@"Test: %d %d", row, column];
+}
+
+- (BOOL)lockView:(JZUnlockView *)lockView endedUnlocking:(NSArray *)sequence {
+    NSLog(@"Unlock sequence: %@", sequence);
+    if (sequence.count == 2 || sequence.count == 5)
+        return YES;
+    return NO;
 }
 
 @end

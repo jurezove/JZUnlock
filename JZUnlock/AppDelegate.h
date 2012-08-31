@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JZUnlockView.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, JZUnlockViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

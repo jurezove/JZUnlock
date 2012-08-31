@@ -8,12 +8,15 @@
 
 #import "JZUnlockView.h"
 
+#define kSelectedColor @"959595"
+#define kInvalidColor @"FF0000"
+#define kValidColor @"00FF00"
 
 @interface JZUnlockView() {
-    NSArray *points;
     BOOL isUnlocking;
 }
 
+@property (nonatomic, strong) NSMutableArray *testPoints;
 @property (nonatomic, strong) NSArray *locks;
 @property (nonatomic, weak) id<JZUnlockViewDelegate>unlockDelegate;
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
@@ -25,7 +28,7 @@
 
 @implementation JZUnlockView
 
-//@synthesize gestureDelegate = _gestureDelegate;
+@synthesize testPoints = _testPoints;
 @synthesize unlockDelegate = _unlockDelegate;
 @synthesize pan = _pan;
 @synthesize activeLocks = _activeLocks;
@@ -40,11 +43,27 @@
         self.backgroundColor = [UIColor whiteColor];
         
         self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        self.pan.maximumNumberOfTouches = 1;
         self.pan.delegate = self;
         [self addGestureRecognizer:self.pan];
         
-        self.activeLocks = [[NSMutableArray alloc] initWithCapacity:16];
-        self.images = [NSMutableDictionary dictionaryWithCapacity:3];
+        int numberOfLocks = 0;
+        switch (pattern) {
+            case JZUnlockPattern2x2:
+                numberOfLocks = 4;
+                break;
+            case JZUnlockPattern3x3:
+                numberOfLocks = 9;
+                break;
+            case JZUnlockPattern4x4:
+                numberOfLocks = 16;
+                break;
+        }
+        
+        self.activeLocks = [[NSMutableArray alloc] initWithCapacity:numberOfLocks];
+        self.testPoints = [[NSMutableArray alloc] initWithCapacity:numberOfLocks + 1];
+        // 4 states
+        self.images = [NSMutableDictionary dictionaryWithCapacity:4];
         self.lineColor = [UIColor greenColor];
     }
     return self;
@@ -54,8 +73,8 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    if (points.count > 0)
-        draw1PxStroke(context, points, self.lineColor.CGColor);
+    if (self.testPoints.count > 0)
+        drawLine(context, self.testPoints, self.lineColor.CGColor);
 }
 
 - (void)drawForPattern:(JZUnlockPattern)pattern {
@@ -71,6 +90,7 @@
             numOfRowsNCols = 2;
             break;
     }
+    
     float widthOfLock = 70.0f;
     float lockGap = CGRectGetWidth(self.frame) / (numOfRowsNCols);
     float verticalStart = (CGRectGetHeight(self.frame) - CGRectGetWidth(self.frame)) / 2;
@@ -87,12 +107,13 @@
                                          y,
                                          widthOfLock,
                                          widthOfLock);
+            id lockData;
+            if ([self.unlockDelegate respondsToSelector:@selector(lockView:dataForRow:column:)])
+                lockData = [self.unlockDelegate lockView:self dataForRow:currentRow-1 column:currentCol-1];
+            
             JZLock *lock = [[JZLock alloc] initWithFrame:lockRect
-                            lockDelegate:self];
-//            [lock setImage:[UIImage imageNamed:@"lock_normal"] forState:JZLockStateNormal];
-//            [lock setImage:[UIImage imageNamed:@"lock_invalid"] forState:JZLockStateInvalid];
-//            [lock setImage:[UIImage imageNamed:@"lock_valid"] forState:JZLockStateValid];
-//            [lock changeState:JZLockStateNormal animated:NO];
+                                            lockDelegate:self
+                                                lockData:lockData];
             
             UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlePress:)];
             longPress.minimumPressDuration = 0;
@@ -108,7 +129,7 @@
 }
 
 - (void)lockActivated:(UIView*)lock {
-    [(JZLock*)lock changeState:JZLockStateValid animated:YES];
+    [(JZLock*)lock changeState:JZLockStateSelected animated:YES];
 }
 
 - (void)cleanup {
@@ -118,7 +139,8 @@
 }
 
 - (void)startUnlocking {
-    self.lineColor = [UIColor greenColor];
+    [self.testPoints removeAllObjects];
+    self.lineColor = [UIColor colorWithHexString:kSelectedColor];
     [self cleanup];
     isUnlocking = YES;
 }
@@ -127,14 +149,33 @@
     isUnlocking = NO;
 //    if (self.activeLocks.count == 1)
 //        [self cleanup];
-
-    self.lineColor = [UIColor redColor];
-    for (JZLock *lock in self.activeLocks) {
-        [lock changeState:JZLockStateInvalid animated:NO];
-    }
-
-    [self.activeLocks removeAllObjects];
     
+    BOOL unlocked = NO;
+    if ([self.unlockDelegate respondsToSelector:@selector(lockView:endedUnlocking:)])
+        unlocked = [self.unlockDelegate lockView:self endedUnlocking:[self unlockData]];
+    
+    JZLockState state;
+    if (unlocked) {
+        // Sucessfully unlocked
+        self.lineColor = [UIColor colorWithHexString:kValidColor];
+        state = JZLockStateValid;
+    } else {
+        self.lineColor = [UIColor colorWithHexString:kInvalidColor];
+        state = JZLockStateInvalid;
+    }
+    for (JZLock *lock in self.activeLocks) {
+        [lock changeState:state animated:NO];
+    }
+    [self.activeLocks removeAllObjects];
+}
+
+- (NSArray*)unlockData {
+    NSMutableArray *unlockData = [NSMutableArray arrayWithCapacity:self.activeLocks.count];
+    for (JZLock *lock in self.activeLocks) {
+        if (lock.lockData)
+            [unlockData addObject:lock.lockData];
+    }
+    return [NSArray arrayWithArray:unlockData];
 }
 
 - (UIView *)lockWith:(CGPoint)point {
@@ -163,12 +204,7 @@
 
 #pragma mark - Drawing
 
-- (void)drawLine:(NSArray *)points_ {
-    points = points_;
-    [self setNeedsDisplay];
-}
-
-void draw1PxStroke(CGContextRef context, NSArray* points,
+void drawLine(CGContextRef context, NSArray* points,
                    CGColorRef color) {
     if (points.count < 1)
         return;
@@ -198,24 +234,31 @@ void draw1PxStroke(CGContextRef context, NSArray* points,
             [self startUnlocking];
             [self.activeLocks addObject:lock];
             [self lockActivated:lock];
-            [self drawLine:@[ [NSValue valueWithCGPoint:lock.center] ]];
+            [self.testPoints addObject:[NSValue valueWithCGPoint:lock.center]];
         }
     } else if (self.activeLocks.count > 0) {
+        // Remvoe the "moving touch" point
+        if (self.testPoints.count > self.activeLocks.count)
+            [self.testPoints removeLastObject];
+        
         // Add other views
         if (lock && ![self.activeLocks containsObject:lock]) {
             [self lockActivated:lock];
             [self.activeLocks addObject:lock];
+            NSValue *valuePoint = [NSValue valueWithCGPoint:lock.center];
+            if (![self.testPoints containsObject:valuePoint])
+                [self.testPoints addObject:valuePoint];
         }
         
-        NSMutableArray *points_ = [NSMutableArray arrayWithCapacity:self.activeLocks.count+1];
-        for (UIView *lock in self.activeLocks) {
-            [points_ addObject:[NSValue valueWithCGPoint:lock.center]];
+        if (pan.state != UIGestureRecognizerStateEnded && pan.state != UIGestureRecognizerStateCancelled) {
+            NSValue *valuePoint = [NSValue valueWithCGPoint:locationInView];
+            if (![self.testPoints containsObject:valuePoint])
+                [self.testPoints addObject:valuePoint];
         }
+
+        [self setNeedsDisplay];
         
-        if (pan.state != UIGestureRecognizerStateEnded && pan.state != UIGestureRecognizerStateCancelled)
-            [points_ addObject:[NSValue valueWithCGPoint:locationInView]];
-        
-        [self drawLine:points_];
+        // Finish unlocking
         if ((pan.state == UIGestureRecognizerStateEnded || pan.state == UIGestureRecognizerStateCancelled) && isUnlocking) {
             [self finishUnlocking];
         }

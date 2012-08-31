@@ -11,6 +11,7 @@
 typedef enum {
     JZLockStateNormal = 0,
     JZLockStateValid,
+    JZLockStateSelected,
     JZLockStateInvalid
 } JZLockState;
 
@@ -22,12 +23,12 @@ typedef enum {
 
 @interface JZLock : UIView
 
-//- (id)initWithFrame:(CGRect)frame
-//           andImage:(UIImage*)image;
 - (id)initWithFrame:(CGRect)frame
-       lockDelegate:(id<JZLockDelegate>)lockDelegate;
+       lockDelegate:(id<JZLockDelegate>)lockDelegate
+           lockData:(id)lockData;
 
 @property (nonatomic, weak) id<JZLockDelegate>lockDelegate;
+@property (nonatomic, strong) id lockData;
 
 - (void)changeState:(JZLockState)state animated:(BOOL)animated;
 
