@@ -25,6 +25,7 @@
 		259BA0C515F0A3A8005645C2 /* lock_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 259BA0C315F0A3A8005645C2 /* lock_selected.png */; };
 		259BA0C615F0A3A8005645C2 /* lock_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 259BA0C415F0A3A8005645C2 /* lock_selected@2x.png */; };
 		259BA0CA15F0A48E005645C2 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 259BA0C915F0A48E005645C2 /* UIColor+Hex.m */; };
+		25DF737D15F2074E007AE139 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DF737C15F2074E007AE139 /* NSData+CommonCrypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		259BA0C415F0A3A8005645C2 /* lock_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_selected@2x.png"; sourceTree = "<group>"; };
 		259BA0C815F0A48E005645C2 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		259BA0C915F0A48E005645C2 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		25DF737B15F2074E007AE139 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		25DF737C15F2074E007AE139 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +76,6 @@
 		250D3B8F15EF487E001EA95D = {
 			isa = PBXGroup;
 			children = (
-				250D3BBB15EF6CD4001EA95D /* QuartzCore.framework */,
 				250D3BA415EF487E001EA95D /* JZUnlock */,
 				250D3B9D15EF487E001EA95D /* Frameworks */,
 				250D3B9B15EF487E001EA95D /* Products */,
@@ -91,6 +93,7 @@
 		250D3B9D15EF487E001EA95D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				250D3BBB15EF6CD4001EA95D /* QuartzCore.framework */,
 				250D3B9E15EF487E001EA95D /* UIKit.framework */,
 				250D3BA015EF487E001EA95D /* Foundation.framework */,
 				250D3BA215EF487E001EA95D /* CoreGraphics.framework */,
@@ -103,6 +106,8 @@
 			children = (
 				250D3BAD15EF487E001EA95D /* AppDelegate.h */,
 				250D3BAE15EF487E001EA95D /* AppDelegate.m */,
+				25DF737B15F2074E007AE139 /* NSData+CommonCrypto.h */,
+				25DF737C15F2074E007AE139 /* NSData+CommonCrypto.m */,
 				250D3BB815EF66C4001EA95D /* JZUnlockView.h */,
 				250D3BB915EF66C4001EA95D /* JZUnlockView.m */,
 				250D3BBD15EFD578001EA95D /* JZLock.h */,
@@ -216,6 +221,7 @@
 				250D3BBA15EF66C4001EA95D /* JZUnlockView.m in Sources */,
 				250D3BBF15EFD578001EA95D /* JZLock.m in Sources */,
 				259BA0CA15F0A48E005645C2 /* UIColor+Hex.m in Sources */,
+				25DF737D15F2074E007AE139 /* NSData+CommonCrypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

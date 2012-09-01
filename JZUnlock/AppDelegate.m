@@ -7,8 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "NSData+CommonCrypto.h"
+
+@interface AppDelegate()
+
+@property (nonatomic, strong) NSData *lock;
+
+@end
 
 @implementation AppDelegate
+
+#pragma mark - Getters/Setters
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,6 +39,8 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -64,10 +76,37 @@
 }
 
 - (BOOL)lockView:(JZUnlockView *)lockView endedUnlocking:(NSArray *)sequence {
-    NSLog(@"Unlock sequence: %@", sequence);
-    if (sequence.count == 2 || sequence.count == 5)
-        return YES;
-    return NO;
+    NSString *lockString = [sequence componentsJoinedByString:@","];
+    NSData *lockData = [lockString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSData *encrypted = [lockData DESEncryptedDataUsingKey:@"Test" error:&error];
+    
+    if (!self.lock) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return NO;
+        }
+        else {
+            self.lock = encrypted;
+            return YES;
+        }
+    } else {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return NO;
+        }
+        else {
+            if ([self.lock isEqual:encrypted])
+                return YES;
+            else
+                return NO;
+        }
+    }
+        
+//    NSLog(@"Unlock sequence: %@", [sequence componentsJoinedByString:@","]);
+//    if (sequence.count == 2 || sequence.count == 5)
+//        return YES;
+//    return NO;
 }
 
 @end
