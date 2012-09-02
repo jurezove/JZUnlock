@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JZLock.h"
+#import "UIColor+Hex.h"
 
 @class JZUnlockView;
 
@@ -36,5 +37,7 @@ typedef enum {
  unlockViewDelegate:(id<JZUnlockViewDelegate>)unlockDelegate;
 
 - (void)setImage:(UIImage*)image forState:(JZLockState)state;
+- (void)setDescriptionText:(NSString*)description animated:(BOOL)animated;
+- (void)clear;
 
 @end
